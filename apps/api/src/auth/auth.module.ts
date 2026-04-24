@@ -1,6 +1,6 @@
-import { Module } from "@nestjs/common";
-import { PassportModule } from "@nestjs/passport";
-import { ClerkStrategy } from "./clerk.strategy";
+import { Module } from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
+import { ClerkStrategy } from './clerk.strategy';
 
 @Module({
   imports: [PassportModule],

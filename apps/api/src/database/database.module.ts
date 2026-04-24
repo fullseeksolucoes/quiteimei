@@ -1,5 +1,5 @@
-import { Global, Module, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
-import { PrismaClient } from "@prisma/client";
+import { Global, Module, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 
 @Global()
 @Module({
@@ -8,7 +8,10 @@ import { PrismaClient } from "@prisma/client";
       provide: PrismaClient,
       useFactory: () => {
         const prisma = new PrismaClient({
-          log: process.env.NODE_ENV === "development" ? ["query", "error"] : ["error"],
+          log:
+            process.env.NODE_ENV === 'development'
+              ? ['query', 'error']
+              : ['error'],
         });
         return prisma;
       },
