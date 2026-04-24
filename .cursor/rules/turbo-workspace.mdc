@@ -1,0 +1,32 @@
+---
+description: pnpm and Turborepo commands for the MeiControl monorepo
+globs: package.json,pnpm-workspace.yaml,turbo.json,**/package.json
+alwaysApply: false
+---
+
+# Turbo Workspace Commands
+
+Run commands from the repository root unless a package-local command is explicitly needed.
+
+Common commands:
+
+```bash
+pnpm dev
+pnpm build
+pnpm lint
+pnpm db:generate
+pnpm db:push
+```
+
+Use filters for focused work:
+
+```bash
+pnpm turbo run dev --filter=@meicontrol/web
+pnpm turbo run dev --filter=@meicontrol/api
+pnpm turbo run build --filter=@meicontrol/web
+pnpm turbo run lint --filter=@meicontrol/api
+pnpm --filter @meicontrol/api test
+pnpm --filter @meicontrol/database db:migrate
+```
+
+`dev` is persistent and uncached. `build` caches `.next/**` and `dist/**`. Prisma generation and push tasks are uncached.

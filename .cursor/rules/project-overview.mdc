@@ -1,0 +1,20 @@
+---
+description: Core MeiControl project context and workspace rules
+alwaysApply: true
+---
+
+# MeiControl Project Context
+
+MeiControl is a fiscal management MicroSaaS for Brazilian MEI/ME businesses. Keep domain language aligned with Brazilian fiscal workflows: DAS, DASN, DEFIS, DCTF, eSocial, CNPJ, MEI/ME, obligations, revenue limits, and WhatsApp reminders.
+
+Use `pnpm` and Turborepo from the repository root. The authoritative lockfile is `pnpm-lock.yaml`; do not use `npm` or treat `package-lock.json` as source of truth.
+
+Workspace packages:
+
+- `@meicontrol/web`: Next.js 16 frontend.
+- `@meicontrol/api`: NestJS API.
+- `@meicontrol/database`: Prisma schema and client exports.
+- `@meicontrol/ui`: Shared React components.
+- `@meicontrol/types`: Shared fiscal/domain types.
+
+Keep shared fiscal enums and interfaces in `@meicontrol/types`, reusable components in `@meicontrol/ui`, and database model changes in `@meicontrol/database`.

@@ -1,0 +1,25 @@
+---
+description: NestJS API conventions for apps/api
+globs: apps/api/**/*.ts
+alwaysApply: false
+---
+
+# API Conventions
+
+`apps/api` is a NestJS 11 API using Passport JWT, Clerk JWKS validation, Prisma, and Jest.
+
+- Keep feature code grouped by Nest module under `src/<feature>`.
+- Use constructor injection for services and clients.
+- The API prefix is `/api`.
+- Global validation uses `ValidationPipe` with `whitelist` and `transform`; define DTOs for validated request bodies.
+- Protect authenticated endpoints with `@UseGuards(ClerkAuthGuard)`.
+- Read authenticated user data with `@CurrentUser()`.
+- Persist Clerk users using the Clerk subject as `User.id`.
+- Use the shared `PrismaClient` provider from `DatabaseModule`.
+
+Validate focused API changes with:
+
+```bash
+pnpm turbo run lint --filter=@meicontrol/api
+pnpm --filter @meicontrol/api test
+```

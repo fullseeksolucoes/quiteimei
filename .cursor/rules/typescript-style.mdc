@@ -1,0 +1,23 @@
+---
+description: TypeScript style expectations for MeiControl
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+
+# TypeScript Style
+
+- Keep TypeScript strict and avoid `any`.
+- Prefer explicit interfaces and descriptive names over comments.
+- Do not add JSDoc comments.
+- Keep code readable before optimizing for brevity.
+- Use existing package patterns before adding new abstractions.
+- Keep shared domain contracts in `@meicontrol/types`.
+- Keep reusable React components in `@meicontrol/ui`.
+- Preserve the formatting style of the package being edited.
+
+For cross-package changes, validate with:
+
+```bash
+pnpm lint
+pnpm build
+```

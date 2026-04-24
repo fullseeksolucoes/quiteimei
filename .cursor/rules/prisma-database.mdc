@@ -1,0 +1,25 @@
+---
+description: Prisma and database conventions for packages/database
+globs: packages/database/**/*
+alwaysApply: false
+---
+
+# Database Conventions
+
+`packages/database` owns the Prisma schema and exports Prisma client utilities for the workspace.
+
+- Edit schema in `packages/database/prisma/schema.prisma`.
+- Keep `User.id` aligned with the Clerk user id.
+- Use `Company` for MEI/ME business profile data.
+- Use `RevenueEntry` for revenue tracking and `FiscalObligation` for due-date/payment tracking.
+- Keep indexes on common company/date lookups.
+- Use `DATABASE_URL` for pooled runtime connections and `DATABASE_DIRECT_URL` for migrations.
+
+After schema changes, run:
+
+```bash
+pnpm db:generate
+pnpm --filter @meicontrol/database db:migrate
+```
+
+Use `pnpm db:push` only for local prototyping when a migration file is not needed.

@@ -1,0 +1,25 @@
+---
+description: Next.js web app conventions for apps/web
+globs: apps/web/**/*
+alwaysApply: false
+---
+
+# Web App Conventions
+
+`apps/web` is a Next.js 16.2.4 App Router app with React 19, Tailwind CSS 4, and Clerk.
+
+Check current local Next docs under `node_modules/next/dist/docs/` before changing routing, middleware, caching, server actions, or other Next-specific APIs.
+
+- Keep public marketing routes under `src/app/(marketing)`.
+- Keep authenticated product routes under `src/app/(app)`.
+- Preserve `src/middleware.ts` protection for `/(app)(.*)` unless auth boundaries intentionally change.
+- Use Clerk APIs from `@clerk/nextjs` and `@clerk/nextjs/server`.
+- Keep user-facing copy in Portuguese when the surrounding UI is Portuguese.
+- Reuse `@meicontrol/ui` and `@meicontrol/types` instead of redefining shared UI or fiscal domain types.
+
+Validate focused web changes with:
+
+```bash
+pnpm turbo run lint --filter=@meicontrol/web
+pnpm turbo run build --filter=@meicontrol/web
+```
