@@ -1,5 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,9 +11,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             MeiControl
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 sm:flex">
-            <Link href="/dashboard" className="transition hover:text-slate-950">
-              Dashboard
-            </Link>
+            <Button asChild variant="ghost">
+              <Link href="/dashboard">Dashboard</Link>
+            </Button>
           </nav>
           <UserButton />
         </div>
